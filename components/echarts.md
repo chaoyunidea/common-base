@@ -1,0 +1,111 @@
+## 示例 {docsify-ignore-all}
+ 
+ **标签名:echarts**
+
+ **简化echart的DOM操作环节，通过setOption控制**
+
+
+
+```
+ <template>
+    <echarts :setOption="option"  style="height:84px;width:100%;"></echarts>
+ </template>
+
+
+  <script>
+    export default {
+      data(){
+        return {
+          option:{}
+        }
+      },
+      mounted(){
+        this.option = getEchart(99,"#1890FF");
+      }
+
+    }
+  
+
+  //画圆echart
+  function getEchart(values, color) {
+        let undervalue = 100- Math.round(values)
+        var opt = {
+            series: [{
+                type: "pie",
+                clockwise: true,
+                radius: ["86%", "94%"],
+                hoverAnimation: false,
+                animation:false,
+                avoidLabelOverlap: false,
+                labelLine: {
+                    normal: { show: false }
+                },
+                data: [{
+                    value: [100],
+                    legendHoverLink: false,
+                    hoverAnimation: false,
+                    itemStyle: {
+                        color: "#F7F7F7"
+                    },
+                    name: ""
+                }]
+            },{
+                type: "pie",
+                clockwise: true,
+                radius: ["84%", "96%"],
+                hoverAnimation: false,
+                avoidLabelOverlap: false,
+                labelLine: {
+                    normal: { show: false }
+                },
+                data: [{
+                    value:[Math.round(values)],
+                    itemStyle: {
+                        color: color
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function(params) {
+                                return ` `;
+                            },
+                            textStyle: {
+                                fontSize: 18,
+                                color:'#333',
+                                fontFamily:'PingFang SC,STHeitiSC-Light,Helvetica-Light,arial,sans-serif'
+                            },
+                            position: "center"
+                        }
+                    }
+                },{
+                    value: [undervalue],
+                    legendHoverLink: false,
+                    hoverAnimation: false,
+                    animation:false,
+                    itemStyle: {
+                        color: 'transparent'
+                    },
+                    name: ""
+                }]
+            }],
+            _value:Math.round(values)
+        };
+        return opt;
+    }
+
+    </script>
+```
+
+
+ 
+## 标签属性说明
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| setOption | echart配置 | Object |  {}  |
+| action | 初始化调用触发事件 | Function |   |
+| loadFlag | 是否需要loading | Bool | false |
+| loadOpt | loading配置 | Object |  {} |
+| type | 图表类型 | String |   |
+ 
+ 
