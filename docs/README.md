@@ -23,4 +23,4 @@
 
 
 此文档并未囊括所有内容，有精力的同学可以来贡献自己的一份力量.
-仓库地址: https://github.com/chaoyunidea/publicmd.git
+仓库地址: https://github.com/chaoyunidea/common-base.git
